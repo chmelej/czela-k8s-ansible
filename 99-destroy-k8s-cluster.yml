@@ -1,0 +1,10 @@
+---
+- hosts: k8s_nodes
+  become: yes
+  become_user: root
+  become_method: sudo
+
+  tasks:
+  - name: Reset node
+    shell: "kubeadm reset -f"
+### EoF

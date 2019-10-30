@@ -16,8 +16,11 @@
         mode: 0644
 
   - name: Init Master
-    #command: "pgrep flanneld || kubeadm init --pod-network-cidr=10.244.0.0/16"
     shell: "pgrep flanneld || kubeadm init --pod-network-cidr=10.244.0.0/16"
+    when: "node_type == 'master'"
+
+  - name: Setup kube config on Master
+    shell: "cp -f /etc/kubernetes/admin.conf /home/{{ansible_ssh_user}}/.kube/config" # nevim proc ale asi musim pockat pokud to zacnu spoustet moc brzo tak to spadne
     when: "node_type == 'master'"
 
   - name: Fetch kube config to localhost
@@ -28,15 +31,23 @@
     when: "node_type == 'master'"
 
 # stahnul jsem aktualni config ted ho musim nastavit a pak pouzivat    
+  - name: Setup kube config on localhost
+    shell: "cp -f files/admin.conf $HOME/.kube/config"
+    delegate_to: localhost
+    become: no
+    run_once: true
+
   - name: Start networking on localhost
     shell: "kubectl apply -f files/kube-flannel.yml"
     delegate_to: localhost
     become: no
+    run_once: true
 
   - name: Start dashboard on localhost
     shell: "kubectl apply -f files/kubernetes-dashboard.yaml"
     delegate_to: localhost
     become: no
+    run_once: true
 
   - name: Create new master token
     shell: "kubeadm token create --print-join-command > /tmp/join_master.sh"
