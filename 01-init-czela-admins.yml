@@ -37,6 +37,14 @@
       groups: sudo
       shell: /bin/bash
 
+  - name: create user filip 
+    user:
+      name: filip
+      uid: 1005
+      append: yes
+      groups: sudo
+      shell: /bin/bash
+
   - name: add public key for kuta
     authorized_key: user=kuta key='ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQCjKvqEl7GNXArvhpSSqASocadNrUTxFUHhMwFspqg7ZRMFdvSFDcvMky8DITJycoF6Zw5ABKrQNgZya2e4MRfCWPV5LDr3oLoUFAh3e9TA8t7UBUMjveaVP49rm50pEo3bDiZhyY5940n7G2IjiFLEwjIKtZaTudgU4DT9QIXqtbhkB9nF5xMMh1eaGdKSseoqoKjKvflzljTVF4DvhythAxp3wU+LEZZImiKNGxqWr4yWtQ3LmELl331BrWvgsSRU38tr12Jl/moMDRTDmrhVMqVbTV5P/5Xi3fxS6MZEkwPR1md2f2fm7Z0bym6lhoYKg0TqV1Dz/fSNk7CBCOHkHr1SpFvP6V9wky9BhbYVzu9IBs2E2o/X6/cJQ+Ey3XFHAhvKOIcAEuLItKwOZo6YSnLKbSANa6a0y+mBqXDflb7NtN+oLqCQBe++/U2rZpjAM84u5jfI84UzzWZHUk4jtbCs0bTYf1tVSpmxmCTiqI28+2W7JPULq6YwcL8yl1NuocnkNFfLsDQOQHk1au58mmff17QDZoaKhqX8wAbHGiyDus2t4JHooRoLA5PwXcOOWF2i2MVV9VGO0q4Cudt2WpphEVHDBp8EmjPncn6sMtPf1q5UsOc84eAF8Mm+WP5LmUKQzIdC9RDUnOrlldbq24Kf2t7pKe0fQ1QCcfi6UQ== kuta'
 
@@ -46,3 +54,6 @@
   - name: add public key for chmelej
     authorized_key: user=chmelej key='ssh-rsa AAAAB3NzaC1yc2EAAAABIwAAAgEAzo9QjrG1Xa4tJNEWOfCmZ/TxdC7ZC6AKk85nWI6Oekw7R1LEsKwkSymIPgNq3CwesYag2UZOu4aeQ3Cxz/37BKjorlK/Ufs7rqvXGtV555nG+udA+QoiOtW4uwRKAv8BqWMOSd9ubxF9hv9Z7CO/wS7dCSl0qQRYkG/nWsVO7GWLIaj81naN19eJynh6acyxNpfUv1x3GQidr8rcuA6srCNY7Z6EWOnBgJA6p1XkEqfb9+8/OjcULa9/rYAsgFMZxk+SDXRVMS/awTYtmyMI6l0Txz9PlHukAV+BcOgTJcO8jmTOmH8nJ0AnPsyug6p+iP1gzphxDEDqd/E3BX+fPprkf29ke+eYGclGI6LmKHRb1jzK1zQIcdUrMrXdaikzT9HOk8HoB22Ef43I13SxINE829ttjwCT4cjzmx3orLw/u/pGZ8lbQ1nDKdgkrWO26wTyvyYAiL6JA9bJfCc+XP8S98FuQE3Hd5hKr5QifB1Saeg2KA/ldQwbwW7oGyjUyd0MhLiLvhXNB+68TDmg/etOcwRii+1jNGo//+d1DoE5Jw73KcGVvvGb+YZH+hHRPInpq9PiJnsMyepV1DqIxkzl7d41QG3hazd/8iCUKDi7E6ffk54caeDfJ9/8Pr/icc63Xgknhoi7IzgMhPmvl8jvk48Is9Pr8fdUakGtlb0= honza@jch'
  
+  - name: add public key for filip
+    authorized_key: user=filip key='ssh-rsa AAAAB3NzaC1yc2EAAAABIwAAAIEArRG87/gBbUJYKMypErUYP5vfoIS6Gtk/Pi9+IgQ9o1Tb7V/XI/iXOS8epQpNxhCZxppAXi/W5Au+DEngAbeF+Tniewmfj4ivyA0mlYGcMES6tAgxF8HDTu42uo2hmFKHWoNfEDOLMm65yAjr0kGJmu7isDpJY6My9GNDoJAOCQs= Filip Jirsak filip@jirsak.org'
+    
