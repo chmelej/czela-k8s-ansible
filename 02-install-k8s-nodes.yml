@@ -1,0 +1,59 @@
+---
+- hosts: k8s_nodes
+  become: yes
+  become_user: root
+  become_method: sudo
+
+  tasks:
+  - name: Update APT repositories cache
+    apt:
+        update_cache: yes
+
+### Install Docker 
+  - name: Install Docker packages
+    apt:
+        name: [ 'apt-transport-https', 'ca-certificates', 'curl', 'gnupg2', 'software-properties-common' ]
+        
+  - name: Add an APT signing key from docker.com
+    apt_key:
+        url: https://download.docker.com/linux/ubuntu/gpg
+        state: present
+
+  - name: Add docker.com Repository to APT
+    lineinfile:
+        path: /etc/apt/sources.list
+        insertafter: 'EOF'
+        line: 'deb https://download.docker.com/linux/ubuntu bionic stable' 
+
+  - name: Update APT repositories cache
+    apt:
+        update_cache: yes
+
+  - name: Install Docker packages
+    apt:
+        name: [ 'docker-ce' ]
+
+### Install Kubernetes
+  - name: Add an APT signing key from cloud.google.com
+    apt_key:
+        url: https://packages.cloud.google.com/apt/doc/apt-key.gpg
+        state: present
+
+  - name: Add cloud.google.com Repository to APT
+    lineinfile:
+        path: /etc/apt/sources.list
+        insertafter: 'EOF'
+        line: 'deb http://apt.kubernetes.io/ kubernetes-xenial main'
+
+  - name: Update APT repositories cache
+    apt:
+        update_cache: yes
+
+  - name: Install K8S packages
+    apt:
+        name: [ 'kubelet', 'kubeadm', 'kubectl' ]
+
+  - name: Install NFS packages
+    apt:
+        name: [ 'nfs-common' ]
+### EoF

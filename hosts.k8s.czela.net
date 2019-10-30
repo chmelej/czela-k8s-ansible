@@ -1,0 +1,9 @@
+k8s-1m.czela.net        ansible_ssh_user=chmelej ansible_python_interpreter=/usr/bin/python3 node_type=master 
+k8s-2s.czela.net        ansible_ssh_user=chmelej ansible_python_interpreter=/usr/bin/python3 node_type=node
+k8s-3s.czela.net        ansible_ssh_user=chmelej ansible_python_interpreter=/usr/bin/python3 node_type=node
+k8s-nfs.czela.net       ansible_ssh_user=chmelej ansible_python_interpreter=/usr/bin/python3 
+
+[k8s_nodes]
+k8s-1m.czela.net
+k8s-2s.czela.net
+k8s-3s.czela.net
