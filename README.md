@@ -12,12 +12,12 @@ ansible-playbook -i hosts.k8s.czela.net 03-init-k8s-cluster.yml --ask-become-pas
 ```
 
 ## TODO
-- skript pro vygenerovani roli a namespace 
+- skript pro vygenerovani roli a namespace
     - kazdy user ma svuj namespace kde muze vsechno a jinak muze jen cist ostatni
 
 - nastaveni NFS, aby bylo mozne sdilet persistentni data mezi nody
 
-- nastaveni ingress, zatim bez https viditelne pouze uvnitr site. 
+- nastaveni ingress, zatim bez https viditelne pouze uvnitr site.
     - vsechno pristupne na domenach *.k8s.czela.net
     - nebudeme resit kolize mezi uzivatelskyma aplikacema (snad se dohodneme)
 

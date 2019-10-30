@@ -9,11 +9,11 @@
     apt:
         update_cache: yes
 
-### Install Docker 
+### Install Docker
   - name: Install Docker packages
     apt:
         name: [ 'apt-transport-https', 'ca-certificates', 'curl', 'gnupg2', 'software-properties-common' ]
-        
+
   - name: Add an APT signing key from docker.com
     apt_key:
         url: https://download.docker.com/linux/ubuntu/gpg
@@ -23,7 +23,7 @@
     lineinfile:
         path: /etc/apt/sources.list
         insertafter: 'EOF'
-        line: 'deb https://download.docker.com/linux/ubuntu bionic stable' 
+        line: 'deb https://download.docker.com/linux/ubuntu bionic stable'
 
   - name: Update APT repositories cache
     apt:

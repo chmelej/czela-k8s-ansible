@@ -4,8 +4,8 @@
   become_user: root
   become_method: sudo
 
-  tasks:
 ### Init K8S Cluster
+  tasks:
   - name: Turnoff Swap
     command: swapoff -a
 
@@ -20,7 +20,7 @@
     when: "node_type == 'master'"
 
   - name: Setup kube config on Master
-    shell: "cp -f /etc/kubernetes/admin.conf /home/{{ansible_ssh_user}}/.kube/config" # nevim proc ale asi musim pockat pokud to zacnu spoustet moc brzo tak to spadne
+    shell: "cp -f /etc/kubernetes/admin.conf /home/{{ansible_ssh_user}}/.kube/config"
     when: "node_type == 'master'"
 
   - name: Fetch kube config to localhost
@@ -30,7 +30,6 @@
         flat: true
     when: "node_type == 'master'"
 
-# stahnul jsem aktualni config ted ho musim nastavit a pak pouzivat    
   - name: Setup kube config on localhost
     shell: "cp -f files/admin.conf $HOME/.kube/config"
     delegate_to: localhost
@@ -49,25 +48,19 @@
     become: no
     run_once: true
 
-  - name: Create new master token
+  - name: Create new master token (valid 1 hour only)
     shell: "kubeadm token create --print-join-command > /tmp/join_master.sh"
     register: master_token
     when: "node_type == 'master'"
 
-  - name: Fetch token to local file
+  - name: Fetch token to localhost
     fetch:
         src: /tmp/join_master.sh
         dest: files/join_master.sh
         flat: true
     when: "node_type == 'master'"
 
-  - name: Copy networking yml to master
-    copy:
-      src: files/join_master.sh
-      dest: /tmp/join_master.sh
-    when: "node_type == 'node'"
-        
-  - name: Copy token to slaves
+  - name: Copy token to nodes
     copy:
       src: files/join_master.sh
       dest: /tmp/join_master.sh

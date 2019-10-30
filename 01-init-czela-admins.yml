@@ -3,7 +3,7 @@
   become: yes
   become_user: root
   become_method: sudo
-  
+
   tasks:
   - name: create user kuta
     user:
@@ -37,7 +37,7 @@
       groups: sudo
       shell: /bin/bash
 
-  - name: create user filip 
+  - name: create user filip
     user:
       name: filip
       uid: 1005
@@ -53,7 +53,7 @@
 
   - name: add public key for chmelej
     authorized_key: user=chmelej key='ssh-rsa AAAAB3NzaC1yc2EAAAABIwAAAgEAzo9QjrG1Xa4tJNEWOfCmZ/TxdC7ZC6AKk85nWI6Oekw7R1LEsKwkSymIPgNq3CwesYag2UZOu4aeQ3Cxz/37BKjorlK/Ufs7rqvXGtV555nG+udA+QoiOtW4uwRKAv8BqWMOSd9ubxF9hv9Z7CO/wS7dCSl0qQRYkG/nWsVO7GWLIaj81naN19eJynh6acyxNpfUv1x3GQidr8rcuA6srCNY7Z6EWOnBgJA6p1XkEqfb9+8/OjcULa9/rYAsgFMZxk+SDXRVMS/awTYtmyMI6l0Txz9PlHukAV+BcOgTJcO8jmTOmH8nJ0AnPsyug6p+iP1gzphxDEDqd/E3BX+fPprkf29ke+eYGclGI6LmKHRb1jzK1zQIcdUrMrXdaikzT9HOk8HoB22Ef43I13SxINE829ttjwCT4cjzmx3orLw/u/pGZ8lbQ1nDKdgkrWO26wTyvyYAiL6JA9bJfCc+XP8S98FuQE3Hd5hKr5QifB1Saeg2KA/ldQwbwW7oGyjUyd0MhLiLvhXNB+68TDmg/etOcwRii+1jNGo//+d1DoE5Jw73KcGVvvGb+YZH+hHRPInpq9PiJnsMyepV1DqIxkzl7d41QG3hazd/8iCUKDi7E6ffk54caeDfJ9/8Pr/icc63Xgknhoi7IzgMhPmvl8jvk48Is9Pr8fdUakGtlb0= honza@jch'
- 
+
   - name: add public key for filip
     authorized_key: user=filip key='ssh-rsa AAAAB3NzaC1yc2EAAAABIwAAAIEArRG87/gBbUJYKMypErUYP5vfoIS6Gtk/Pi9+IgQ9o1Tb7V/XI/iXOS8epQpNxhCZxppAXi/W5Au+DEngAbeF+Tniewmfj4ivyA0mlYGcMES6tAgxF8HDTu42uo2hmFKHWoNfEDOLMm65yAjr0kGJmu7isDpJY6My9GNDoJAOCQs= Filip Jirsak filip@jirsak.org'
-    
+
